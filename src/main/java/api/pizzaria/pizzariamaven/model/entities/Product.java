@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
+    private Long id;
     private int code;
     private String name;
     private Category category;

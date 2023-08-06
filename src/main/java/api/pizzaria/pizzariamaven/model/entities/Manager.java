@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Ingreients {
+public class Manager extends User{
     private Long id;
-    private String name;
 }
