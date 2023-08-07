@@ -1,13 +1,14 @@
 package api.pizzaria.pizzariamaven;
 
-import org.springframework.boot.SpringApplication;
+import api.pizzaria.pizzariamaven.cadastro.TelaInicial;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class PizzariaMavenApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PizzariaMavenApplication.class, args);
-    }
+//    public static void main(String[] args) {
+//        SpringApplication.run(PizzariaMavenApplication.class, args);
+//    }
+
 
 }

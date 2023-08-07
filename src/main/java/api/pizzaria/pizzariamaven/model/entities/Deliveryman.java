@@ -12,5 +12,5 @@ import lombok.Setter;
 public class Deliveryman extends Employee {
     private Long id;
     private String motorcyclePlate;
-    private char[] password;
+    private String password;
 }

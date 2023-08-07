@@ -14,5 +14,5 @@ public class User {
     private String login;
     private String password;
     private String phone;
-    private List<Address> address;
+    private String address;
 }

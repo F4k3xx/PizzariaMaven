@@ -9,10 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class Employee extends User {
+public class Employee extends User {
     private Long id;
-    private int register;
     private String login;
-    private char[] password;
-
+    private String password;
 }
