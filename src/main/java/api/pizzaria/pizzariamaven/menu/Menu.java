@@ -47,12 +47,13 @@ public class Menu {
         Bebidas bebidas = new Bebidas();
         valorBebidas = bebidas.catalogoBebidas();
         log.info(valorBebidas);
+        somaValores();
     }
 
     public void somaValores() {
-        int valorTotal = 0;
-        valorTotal = valorTotalPizza + valorBebidas;
-        log.info("Valor total do pedido: " + valorTotal);
+        int valorTota = 0;
+        valorTota = valorTotalPizza + valorBebidas;
+        log.info("Valor total do pedido: " + valorTota);
 
 //        Pagamentos pagamentos = new Pagamentos();
 //        pagamentos.telaInicialPagamentos(valorTotal);

@@ -54,7 +54,7 @@ public class Bebidas {
         }
         while (continuar.equals("s") || continuar.equals("S"));
 
-        log.info("Valor bebidas " + soma);
+        log.info("Valor bebidas: " + soma);
 
         return soma;
     }
