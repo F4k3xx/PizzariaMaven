@@ -3,13 +3,10 @@ package api.pizzaria.pizzariamaven.produtos.pizzaSabores;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Log4j2
 public enum Sabores {
 
     // Sabores salgados
@@ -23,6 +20,7 @@ public enum Sabores {
     MARGUERITA(33.0),
     PALMITO(37.0),
     ESCAROLA(38.0),
+    PALMITO_COM_BACON(37.0),
 
     // Sabores doces
     CHOCOLATE(30.0),
@@ -38,11 +36,6 @@ public enum Sabores {
     LEITE_NINHO(42.0),
     CHOCOLATE_BANANA(44.0);
 
-    private String saborPizza;
-
     private double preco;
 
-    Sabores(double preco) {
-        this.preco = preco;
-    }
 }

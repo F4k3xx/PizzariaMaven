@@ -49,24 +49,28 @@ public class Cadastro {
     }
 
     public void InsertLogin() {
-        log.info("Insira seu login: ");
-        String login = leitor.nextLine();
+        try {
+            log.info("Insira seu login: ");
+            String login = leitor.nextLine();
 
-        if (user.getLogin().equals(login)) {
-            insertPassword();
-        } else {
-            log.info("Login não encontrado!");
-            log.info("Tente novamente!");
-            InsertLogin();
+            if (user.getLogin().equals(login)) {
+                insertPassword();
+            } else {
+                log.info("Login não encontrado!");
+                log.info("Tente novamente!");
+                InsertLogin();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Este login não existe no sistema!");
         }
+
     }
 
     public void insertPassword() {
         log.info("Insira sua senha: ");
         String password = leitor.nextLine();
         if (user.getPassword().equals(password)) {
-            Menu menu = new Menu();
-            menu.cardapioPizza();
+            log.info("Login efetuado com sucesso!");
         } else {
             log.info("Senha incorreta!");
             log.info("Tente novamente!");

@@ -35,7 +35,7 @@ public class Menu {
 
         log.info("Escolha o sabor da sua pizza!");
         for (Sabores pizza : Sabores.values()) {
-            log.info(pizza.ordinal() + "-" + "Sabor: " + pizza.getSaborPizza() + ": $" + pizza.getPreco());
+            log.info(pizza.ordinal() + "-" + "Sabor: " + pizza + ": $" + pizza.getPreco());
         }
         Pizza pizza = new Pizza();
         valorTotalPizza = pizza.adicionarPedidoPizza(tamanho);
