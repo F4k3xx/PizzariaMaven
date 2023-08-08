@@ -16,8 +16,9 @@ import java.util.Scanner;
 @NoArgsConstructor
 @Log4j2
 public class Cadastro {
-    User user = new User(1L, "nome", "login", "password", "phone", "address");
+    private User user = new User(1L, "nome", "login", "password", "phone", "address");
     public Scanner leitor = new Scanner(System.in);
+    private String address;
 
     public void registerUser() {
         log.info(">>>>>> CADASTRO <<<<<<");
@@ -36,10 +37,11 @@ public class Cadastro {
         user.setPhone(leitor.nextLine());
 
         log.info("-> Digite seu endereço:");
-        user.setAddress(leitor.nextLine());
+        user.setAddress(address);
 
         insertLogin();
     }
+
 
     private void validateInfo() {
         if (StringUtils.isEmpty(user.getLogin()) && StringUtils.isEmpty(user.getPassword())) {
