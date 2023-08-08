@@ -1,6 +1,8 @@
 package api.pizzaria.pizzariamaven.pedido;
 
 
+import api.pizzaria.pizzariamaven.cadastro.Cadastro;
+import api.pizzaria.pizzariamaven.model.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,10 +18,10 @@ import java.util.Scanner;
 @Log4j2
 public class ModoRetirarPedido {
     public Scanner leia = new Scanner(System.in);
-    private User user = new User();
     private int modoEntrega;
 
-    public void escolherEntega() {
+    public void escolherEntega(Cadastro cadastro) {
+        User user = cadastro.getUser();
         log.info("===== ENTREGA DO PEDIDO =====\n");
         log.info("1. RETIRADA NO BALCÃO\n" + "2. ENTREGA A DOMICÍLIO\n " + "3. ALACARTE");
         log.info("-> Selecione a melhor opção para você: ");
@@ -35,7 +37,7 @@ public class ModoRetirarPedido {
                     log.info("Preciso que insira o seu endereço");
                     user.setAddress(leia.next());
                 }
-                log.info("===== ENTREGA A DOMOCÍLIO =====" + "\n*** Frete GRÁTIS *** " + "\nEndereço de entrega registrado em cadastro: ");
+                log.info("===== ENTREGA A DOMOCÍLIO =====" + "\n*** Frete GRÁTIS *** " + "\nEndereço de entrega registrado em cadastro: " + user.getAddress());
                 break;
             case 3:
                 log.info("===== ALACARTE =====" + "\nNos informe o número da sua mesa");
@@ -44,7 +46,7 @@ public class ModoRetirarPedido {
 
                 break;
             default:
-                escolherEntega();
+                escolherEntega(cadastro);
         }
     }
 

@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class Cadastro {
     private User user = new User(1L, "nome", "login", "password", "phone", "address");
     public Scanner leitor = new Scanner(System.in);
-    private String address;
+
 
     public void registerUser() {
         log.info(">>>>>> CADASTRO <<<<<<");
@@ -37,7 +37,7 @@ public class Cadastro {
         user.setPhone(leitor.nextLine());
 
         log.info("-> Digite seu endereço:");
-        user.setAddress(address);
+        user.setAddress(leitor.nextLine());
 
         insertLogin();
     }

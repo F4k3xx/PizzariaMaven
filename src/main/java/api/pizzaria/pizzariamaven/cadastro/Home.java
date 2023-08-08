@@ -42,25 +42,25 @@ public class Home {
                 entrada.nextLine();
                 escolherOpcoesMenu();
             }
-            chamarMenu();
+            chamarMenu(cadastro);
         } catch (InputMismatchException e) {
             log.error("Opção inválida! Por favor, digite uma opção válida!.");
             escolherOpcoesMenu();
         }
     }
 
-    public void chamarMenu() {
+    public void chamarMenu(Cadastro cadastro) {
         Menu menu = new Menu();
         menu.cardapioPizza();
         menu.cardapioBebidas();
         menu.somaValores();
 
-        chamarEntrega();
+        chamarEntrega(cadastro);
     }
 
-    private void chamarEntrega() {
+    private void chamarEntrega(Cadastro cadastro) {
         ModoRetirarPedido modoRetirarPedido = new ModoRetirarPedido();
-        modoRetirarPedido.escolherEntega();
+        modoRetirarPedido.escolherEntega(cadastro);
 
         escolherFormaDePagamento();
     }
