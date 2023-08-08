@@ -41,7 +41,8 @@ public class Home {
                 escolherOpcoesMenu();
             }
         } catch (InputMismatchException e) {
-            throw new RuntimeException("Opção inválida! Por favor, digite uma opção válida!.");
+            log.error("Opção inválida! Por favor, digite uma opção válida!.");
+            escolherOpcoesMenu();
         }
     }
 

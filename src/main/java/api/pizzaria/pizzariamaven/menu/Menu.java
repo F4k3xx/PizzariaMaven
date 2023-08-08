@@ -2,6 +2,7 @@ package api.pizzaria.pizzariamaven.menu;
 
 
 import api.pizzaria.pizzariamaven.model.entities.Pizza;
+import api.pizzaria.pizzariamaven.pedido.ModoRetirarPedido;
 import api.pizzaria.pizzariamaven.produtos.Bebidas.Bebidas;
 import api.pizzaria.pizzariamaven.produtos.pizzaSabores.Sabores;
 import api.pizzaria.pizzariamaven.produtos.tamanho.EnumTamanho;
@@ -51,11 +52,11 @@ public class Menu {
     }
 
     public void somaValores() {
-        int valorTota = 0;
-        valorTota = valorTotalPizza + valorBebidas;
-        log.info("Valor total do pedido: " + valorTota);
+        int valorTotal = 0;
+        valorTotal = valorTotalPizza + valorBebidas;
+        log.info("Valor total do pedido: " + valorTotal);
 
-//        Pagamentos pagamentos = new Pagamentos();
-//        pagamentos.telaInicialPagamentos(valorTotal);
+        ModoRetirarPedido modoRetirarPedido = new ModoRetirarPedido();
+        modoRetirarPedido.escolherEntega();
     }
 }

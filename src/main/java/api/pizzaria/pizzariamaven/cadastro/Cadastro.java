@@ -1,6 +1,5 @@
 package api.pizzaria.pizzariamaven.cadastro;
 
-import api.pizzaria.pizzariamaven.menu.Menu;
 import api.pizzaria.pizzariamaven.model.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

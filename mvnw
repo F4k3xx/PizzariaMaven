@@ -169,7 +169,7 @@ concat_lines() {
   fi
 }
 
-log() {
+log.info() {
   if [ "$MVNW_VERBOSE" = true ]; then
     printf '%s\n' "$1"
   fi
@@ -181,7 +181,7 @@ if [ -z "$BASE_DIR" ]; then
 fi
 
 MAVEN_PROJECTBASEDIR=${MAVEN_BASEDIR:-"$BASE_DIR"}; export MAVEN_PROJECTBASEDIR
-log "$MAVEN_PROJECTBASEDIR"
+log.info "$MAVEN_PROJECTBASEDIR"
 
 ##########################################################################################
 # Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
@@ -189,9 +189,9 @@ log "$MAVEN_PROJECTBASEDIR"
 ##########################################################################################
 wrapperJarPath="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar"
 if [ -r "$wrapperJarPath" ]; then
-    log "Found $wrapperJarPath"
+    log.info "Found $wrapperJarPath"
 else
-    log "Couldn't find $wrapperJarPath, downloading it ..."
+    log.info "Couldn't find $wrapperJarPath, downloading it ..."
 
     if [ -n "$MVNW_REPOURL" ]; then
       wrapperUrl="$MVNW_REPOURL/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar"
@@ -204,14 +204,14 @@ else
       case "$key" in (wrapperUrl) wrapperUrl="$safeValue"; break ;;
       esac
     done < "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties"
-    log "Downloading from: $wrapperUrl"
+    log.info "Downloading from: $wrapperUrl"
 
     if $cygwin; then
       wrapperJarPath=$(cygpath --path --windows "$wrapperJarPath")
     fi
 
     if command -v wget > /dev/null; then
-        log "Found wget ... using wget"
+        log.info "Found wget ... using wget"
         [ "$MVNW_VERBOSE" = true ] && QUIET="" || QUIET="--quiet"
         if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
             wget $QUIET "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
@@ -219,7 +219,7 @@ else
             wget $QUIET --http-user="$MVNW_USERNAME" --http-password="$MVNW_PASSWORD" "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
         fi
     elif command -v curl > /dev/null; then
-        log "Found curl ... using curl"
+        log.info "Found curl ... using curl"
         [ "$MVNW_VERBOSE" = true ] && QUIET="" || QUIET="--silent"
         if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
             curl $QUIET -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
@@ -227,7 +227,7 @@ else
             curl $QUIET --user "$MVNW_USERNAME:$MVNW_PASSWORD" -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
         fi
     else
-        log "Falling back to using Java to download"
+        log.info "Falling back to using Java to download"
         javaSource="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.java"
         javaClass="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.class"
         # For Cygwin, switch paths to Windows format before running javac
@@ -237,11 +237,11 @@ else
         fi
         if [ -e "$javaSource" ]; then
             if [ ! -e "$javaClass" ]; then
-                log " - Compiling MavenWrapperDownloader.java ..."
+                log.info " - Compiling MavenWrapperDownloader.java ..."
                 ("$JAVA_HOME/bin/javac" "$javaSource")
             fi
             if [ -e "$javaClass" ]; then
-                log " - Running MavenWrapperDownloader.java ..."
+                log.info " - Running MavenWrapperDownloader.java ..."
                 ("$JAVA_HOME/bin/java" -cp .mvn/wrapper MavenWrapperDownloader "$wrapperUrl" "$wrapperJarPath") || rm -f "$wrapperJarPath"
             fi
         fi
