@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.util.StringUtils;
 
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ import java.util.Scanner;
 @NoArgsConstructor
 @Log4j2
 public class Cadastro {
-    User user = new User();
+    User user = new User(1L, "nome", "login", "password", "phone", "address");
     public Scanner leitor = new Scanner(System.in);
 
     public void registerUser() {
@@ -37,32 +38,26 @@ public class Cadastro {
         log.info("-> Digite seu endereço:");
         user.setAddress(leitor.nextLine());
 
-        InsertLogin();
+        insertLogin();
     }
 
     private void validateInfo() {
-        if (user.getLogin().equals(null) && user.getPassword().equals(null)) {
+        if (StringUtils.isEmpty(user.getLogin()) && StringUtils.isEmpty(user.getPassword())) {
             log.info("Login e senha não podem ser vazio!");
             registerUser();
         }
     }
 
-    public void InsertLogin() {
-        try {
-            log.info("Insira seu login: ");
-            String login = leitor.nextLine();
-
-            if (user.getLogin().equals(login)) {
-                insertPassword();
-            } else {
-                log.info("Login não encontrado!");
-                log.info("Tente novamente!");
-                InsertLogin();
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("Este login não existe no sistema!");
+    public void insertLogin() {
+        log.info("Insira seu login: ");
+        String login = leitor.nextLine();
+        if (user.getLogin().equals(login)) {
+            insertPassword();
+        } else {
+            log.info("Login não encontrado!");
+            log.info("Tente novamente!");
+            insertLogin();
         }
-
     }
 
     public void insertPassword() {

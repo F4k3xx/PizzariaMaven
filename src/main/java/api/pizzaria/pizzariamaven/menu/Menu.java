@@ -25,38 +25,36 @@ public class Menu {
     int valorBebidas = 0;
 
     public void cardapioPizza() {
-        int tamanho = 0;
-        log.info("=========== CATALOGO ===========");
-        log.info("[0]- Pequena -->  1 Sabor");
-        log.info("[1]- Grande  -->  2 Sabor");
-        log.info("[2]- Gigante -->  3 Sabor");
-        log.info("Escolha o tamanho da sua Pizza:");
-        tamanho = sc.nextInt();
-        log.info(EnumTamanho.values()[tamanho]);
+        try {
+            int tamanho = 0;
+            log.info("=========== CATALOGO ===========");
+            log.info("[0]- Pequena -->  1 Sabor");
+            log.info("[1]- Grande  -->  2 Sabor");
+            log.info("[2]- Gigante -->  3 Sabor");
+            log.info("Escolha o tamanho da sua Pizza:");
+            tamanho = sc.nextInt();
+            log.info(EnumTamanho.values()[tamanho]);
 
-        log.info("Escolha o sabor da sua pizza!");
-        for (Sabores pizza : Sabores.values()) {
-            log.info(pizza.ordinal() + "-" + "Sabor: " + pizza + ": $" + pizza.getPreco());
+            log.info("Escolha o sabor da sua pizza!");
+            for (Sabores pizza : Sabores.values()) {
+                log.info(pizza.ordinal() + "-" + "Sabor: " + pizza + ": $" + pizza.getPreco());
+            }
+            Pizza pizza = new Pizza();
+            valorTotalPizza = pizza.adicionarPedidoPizza(tamanho);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            log.error("Opção inválida! Por favor, digite uma opção válida!.");
+            cardapioPizza();
         }
-        Pizza pizza = new Pizza();
-        valorTotalPizza = pizza.adicionarPedidoPizza(tamanho);
-        log.info(valorTotalPizza);
-        cardapioBebidas();
     }
 
     public void cardapioBebidas() {
         Bebidas bebidas = new Bebidas();
         valorBebidas = bebidas.catalogoBebidas();
-        log.info(valorBebidas);
-        somaValores();
     }
 
     public void somaValores() {
         int valorTotal = 0;
         valorTotal = valorTotalPizza + valorBebidas;
         log.info("Valor total do pedido: " + valorTotal);
-
-        ModoRetirarPedido modoRetirarPedido = new ModoRetirarPedido();
-        modoRetirarPedido.escolherEntega();
     }
 }

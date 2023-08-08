@@ -70,7 +70,5 @@ public class Pagamentos {
             log.info("Selecione uma opção válida!");
             pagamentoPorCartao();
         }
-
     }
-
 }

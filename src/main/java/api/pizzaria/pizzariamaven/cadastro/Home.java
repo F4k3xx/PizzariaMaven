@@ -1,6 +1,10 @@
 package api.pizzaria.pizzariamaven.cadastro;
 
+import api.pizzaria.pizzariamaven.exception.DomainException;
 import api.pizzaria.pizzariamaven.menu.Menu;
+import api.pizzaria.pizzariamaven.pagamentos.Pagamentos;
+import api.pizzaria.pizzariamaven.pedido.EntregarRetirar;
+import api.pizzaria.pizzariamaven.pedido.ModoRetirarPedido;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.InputMismatchException;
@@ -28,18 +32,17 @@ public class Home {
             int escolha = entrada.nextInt();
 
             if (escolha == 1) {
-//                cadastro.InsertLogin();
-                chamarMenu();
+                cadastro.insertLogin();
             } else if (escolha == 2) {
                 cadastro.registerUser();
-                chamarMenu();
             } else if (escolha == 3) {
-                log.info("Você saiu do programa!");
+                throw new DomainException("Você saiu do programa!");
             } else {
                 log.info("Opção inválida!");
                 entrada.nextLine();
                 escolherOpcoesMenu();
             }
+            chamarMenu();
         } catch (InputMismatchException e) {
             log.error("Opção inválida! Por favor, digite uma opção válida!.");
             escolherOpcoesMenu();
@@ -49,5 +52,30 @@ public class Home {
     public void chamarMenu() {
         Menu menu = new Menu();
         menu.cardapioPizza();
+        menu.cardapioBebidas();
+        menu.somaValores();
+
+        chamarEntrega();
     }
+
+    private void chamarEntrega() {
+        ModoRetirarPedido modoRetirarPedido = new ModoRetirarPedido();
+        modoRetirarPedido.escolherEntega();
+
+        escolherFormaDePagamento();
+    }
+
+    private void escolherFormaDePagamento() {
+        Pagamentos pagamentos = new Pagamentos();
+        pagamentos.escolhaDoPagamento();
+
+        finalizarPedido();
+    }
+
+    private void finalizarPedido() {
+        EntregarRetirar entregarRetirar = new EntregarRetirar();
+        entregarRetirar.finalizar();
+    }
+
+
 }
