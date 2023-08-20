@@ -1,6 +1,6 @@
 package api.pizzaria.pizzariamaven;
 
-import api.pizzaria.pizzariamaven.cadastro.Home;
+import api.pizzaria.pizzariamaven.model.entities.register.Home;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
